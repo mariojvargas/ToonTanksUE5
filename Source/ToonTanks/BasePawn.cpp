@@ -3,7 +3,7 @@
 
 #include "BasePawn.h"
 #include "Components/CapsuleComponent.h"
-
+#include "Components/StaticMeshComponent.h"	// Really optional because I didn't get squigglies 
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -13,6 +13,15 @@ ABasePawn::ABasePawn()
 	
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
 	RootComponent = CapsuleComponent;
+
+	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Tank Base Mesh"));
+	BaseMesh->SetupAttachment(CapsuleComponent);
+
+	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
+	TurretMesh->SetupAttachment(BaseMesh);
+
+	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
+	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
 
 // Called when the game starts or when spawned
