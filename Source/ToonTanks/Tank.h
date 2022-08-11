@@ -16,11 +16,23 @@ class TOONTANKS_API ATank : public ABasePawn
 
 public:
 	ATank();
-	
+
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 400.f;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurnRate = 200.f;
+
+	void Move(float Value);
+	
+	void Turn(float Value);
 };
