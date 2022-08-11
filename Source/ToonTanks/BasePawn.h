@@ -26,16 +26,38 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// UPROPERTY(VisibleInstanceOnly)
+	// int32 VisibleInstanceOnly = 1792;
+
+	// UPROPERTY(VisibleDefaultsOnly)
+	// int32 VisibleDefaultsOnlyInt = 85;
+
+	// UPROPERTY(EditDefaultsOnly)
+	// int32 EditDefaultsOnlyInt = 50;
+
+	// UPROPERTY(EditInstanceOnly)
+	// int32 EditInstanceOnlyInt = 32;
+
+	// UPROPERTY(EditAnywhere)
+	// float Mana = 100.f;
+
 private:
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent* CapsuleComponent;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* BaseMesh;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* TurretMesh;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
+
+	
+	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Super Duper", meta = (AllowPrivateAccess = "true"))
+	// int32 VisibleAnywhereInt = 12;
+
+	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Super Duper", meta = (AllowPrivateAccess = "true"))
+	// int32 EditAnywhereInt = 42;
 };
