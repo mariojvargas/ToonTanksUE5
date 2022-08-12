@@ -17,6 +17,7 @@ public:
 
 protected:
 	void RotateTurret(FVector Target);
+	void Fire();
 
 private:
 	const float TURRET_INTERPOLATION_SPEED = 5.f;
