@@ -16,29 +16,11 @@ public:
 	ABasePawn();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// UPROPERTY(VisibleInstanceOnly)
-	// int32 VisibleInstanceOnly = 1792;
-
-	// UPROPERTY(VisibleDefaultsOnly)
-	// int32 VisibleDefaultsOnlyInt = 85;
-
-	// UPROPERTY(EditDefaultsOnly)
-	// int32 EditDefaultsOnlyInt = 50;
-
-	// UPROPERTY(EditInstanceOnly)
-	// int32 EditInstanceOnlyInt = 32;
-
-	// UPROPERTY(EditAnywhere)
-	// float Mana = 100.f;
+	void RotateTurret(FVector Target);
 
 private:
+	const float TURRET_INTERPOLATION_SPEED = 5.f;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent* CapsuleComponent;
 
@@ -50,11 +32,4 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
-
-	
-	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Super Duper", meta = (AllowPrivateAccess = "true"))
-	// int32 VisibleAnywhereInt = 12;
-
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Super Duper", meta = (AllowPrivateAccess = "true"))
-	// int32 EditAnywhereInt = 42;
 };
