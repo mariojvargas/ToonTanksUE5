@@ -21,8 +21,16 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	class ATank* Tank;
-
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float FireRange = 1000;
+
+	class ATank* Tank;
+
+	FTimerHandle FireRateTimerHandle;
+
+	float FireRate = 1.f;
+
+	bool IsTankWithinFireRange() const;
+
+	void CheckFireCondition();
 };
