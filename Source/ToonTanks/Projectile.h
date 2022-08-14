@@ -28,4 +28,13 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UProjectileMovementComponent* ProjectileMovement = nullptr;
+
+	UFUNCTION()
+	void OnHit(
+		UPrimitiveComponent* HittingComponent,	// component doing the hitting
+		AActor* OtherActor,						// actor that got hit
+		UPrimitiveComponent* OtherComponent,	// static mesh component of component that was hit
+		FVector NormalImpulse,					// if simulating physics, physics engine add impulse representing direction and magnitude
+		const FHitResult& HitResult				// additional info about hit
+	);
 };

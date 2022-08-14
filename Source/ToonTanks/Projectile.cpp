@@ -22,4 +22,20 @@ AProjectile::AProjectile()
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
+
+	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+}
+
+void AProjectile::OnHit(
+	UPrimitiveComponent* HittingComponent,
+	AActor* OtherActor,
+	UPrimitiveComponent* OtherComponent,
+	FVector NormalImpulse,
+	const FHitResult& HitResult)
+{
+	UE_LOG(LogTemp, Warning, TEXT("OnHit called: HitComp [%s] | OtherActor [%s] | OtherComp [%s]"),
+		*HittingComponent->GetName(),
+		*OtherActor->GetName(),
+		*OtherComponent->GetName()
+	);
 }
