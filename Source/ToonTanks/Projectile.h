@@ -23,6 +23,9 @@ private:
 	const float INITIAL_SPEED = 5000.f;
 	const float MAX_SPEED = 10000.f;
 
+	UPROPERTY(EditAnywhere)
+	float Damage = 50.f;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visuals", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ProjectileMesh = nullptr;
 
@@ -32,7 +35,7 @@ private:
 	UFUNCTION()
 	void OnHit(
 		UPrimitiveComponent* HittingComponent,	// component doing the hitting
-		AActor* OtherActor,						// actor that got hit
+		AActor* DamagedActor,					// actor that got hit
 		UPrimitiveComponent* OtherComponent,	// static mesh component of component that was hit
 		FVector NormalImpulse,					// if simulating physics, physics engine add impulse representing direction and magnitude
 		const FHitResult& HitResult				// additional info about hit
