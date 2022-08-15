@@ -21,5 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	class ATank* Tank;
+	class ATank* Tank = nullptr;
+
+	class AToonTanksPlayerController* ToonTanksPlayerController = nullptr;
 };
