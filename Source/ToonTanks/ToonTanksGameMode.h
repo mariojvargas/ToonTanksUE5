@@ -23,6 +23,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bWonGame);
+
 private:
 	class ATank* Tank = nullptr;
 
@@ -30,5 +33,9 @@ private:
 
 	float StartDelay = 3.f;
 
+	int32 CurrentEnemyTowerCount = 0;
+
 	void HandleGameStart();
+
+	int32 GetEnemyTowerCount();
 };
