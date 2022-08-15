@@ -36,6 +36,8 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 
 void AToonTanksGameMode::HandleGameStart()
 {
+    StartGame();
+    
     if (ToonTanksPlayerController)
     {
         ToonTanksPlayerController->SetPlayerEnabledState(false);
