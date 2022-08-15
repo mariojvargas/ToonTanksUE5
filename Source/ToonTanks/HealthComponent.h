@@ -36,6 +36,8 @@ private:
 		AActor* DamageCauser			// actual actor causing the damage, such as a projectile
 	);
 
+	class AToonTanksGameMode* ToonTanksGameMode = nullptr;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

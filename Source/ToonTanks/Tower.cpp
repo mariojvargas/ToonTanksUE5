@@ -31,6 +31,13 @@ void ATower::Tick(float DeltaTime)
     }
 }
 
+void ATower::HandleDestruction()
+{
+    Super::HandleDestruction();
+
+    Destroy();
+}
+
 bool ATower::IsTankWithinFireRange() const
 {
     return Tank != nullptr 
