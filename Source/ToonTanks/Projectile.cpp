@@ -37,18 +37,22 @@ void AProjectile::OnHit(
 {
 	if (!DamagedActor || DamagedActor == this)
 	{
+		Destroy();
 		return;
 	}
 	
 	auto ProjectileOwner = GetOwner();
-	if (!ProjectileOwner || ProjectileOwner == DamagedActor)
+	if (ProjectileOwner && ProjectileOwner != DamagedActor)
 	{
-		return;
+		auto OwnerInstigator = ProjectileOwner->GetInstigatorController();
+		auto DamageTypeClass = UDamageType::StaticClass();
+		UGameplayStatics::ApplyDamage(DamagedActor, Damage, OwnerInstigator, this, DamageTypeClass);
+
+		if (ImpactParticles)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, ImpactParticles, GetActorLocation(), GetActorRotation());
+		}
 	}
 
-	auto OwnerInstigator = ProjectileOwner->GetInstigatorController();
-	auto DamageTypeClass = UDamageType::StaticClass();
-	UGameplayStatics::ApplyDamage(DamagedActor, Damage, OwnerInstigator, this, DamageTypeClass);
-
-	Destroy();
+	Destroy();		
 }

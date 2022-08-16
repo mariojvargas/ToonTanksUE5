@@ -26,8 +26,11 @@ private:
 	UPROPERTY(EditAnywhere)
 	float Damage = 50.f;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Visuals", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ProjectileMesh = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class UParticleSystem* ImpactParticles = nullptr;
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UProjectileMovementComponent* ProjectileMovement = nullptr;
