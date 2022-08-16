@@ -32,6 +32,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class UParticleSystem* ImpactParticles = nullptr;
 
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	class UParticleSystemComponent* TrailParticleSystem = nullptr;
+
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UProjectileMovementComponent* ProjectileMovement = nullptr;
 
