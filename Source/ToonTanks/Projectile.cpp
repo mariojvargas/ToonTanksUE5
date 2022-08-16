@@ -30,6 +30,11 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+
+	if (LaunchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
+	}
 }
 
 void AProjectile::OnHit(
@@ -39,6 +44,11 @@ void AProjectile::OnHit(
 	FVector NormalImpulse,
 	const FHitResult& HitResult)
 {
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+	}
+
 	if (!DamagedActor || DamagedActor == this)
 	{
 		Destroy();
