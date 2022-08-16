@@ -33,6 +33,7 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
         }
 
         GameOver(false);
+        RestartLevelAfterDelay();
     }
     else if (ATower* DestroyedTower = Cast<ATower>(DeadActor))
     {
@@ -42,6 +43,7 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
         if (CurrentEnemyTowerCount == 0)
         {
             GameOver(true);
+            RestartLevelAfterDelay();
         }
     }
 }
@@ -71,4 +73,25 @@ int32 AToonTanksGameMode::GetEnemyTowerCount()
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATower::StaticClass(), Towers);
 
     return Towers.Num();
+}
+
+void AToonTanksGameMode::RestartLevelAfterDelay()
+{
+    FTimerDelegate LevelRestartTimerDelegate = FTimerDelegate::CreateUObject(
+        this,
+        &AToonTanksGameMode::RestartCurrentLevel
+    );
+
+    FTimerHandle LevelRestartTimerHandle;
+    GetWorldTimerManager().SetTimer(
+        LevelRestartTimerHandle,
+        LevelRestartTimerDelegate,
+        GameRestartDelay,
+        false
+    );
+}
+
+void AToonTanksGameMode::RestartCurrentLevel()
+{
+    UGameplayStatics::OpenLevel(this, FName(GetWorld()->GetName()));
 }

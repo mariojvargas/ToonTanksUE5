@@ -38,4 +38,11 @@ private:
 	void HandleGameStart();
 
 	int32 GetEnemyTowerCount();
+
+	void RestartCurrentLevel();
+
+	void RestartLevelAfterDelay();
+
+	UPROPERTY(EditAnywhere, Category = "Gameplay")
+	float GameRestartDelay = 5.f;
 };
