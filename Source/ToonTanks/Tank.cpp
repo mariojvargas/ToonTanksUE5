@@ -41,12 +41,19 @@ void ATank::Tick(float DeltaTime)
     }
 }
 
+bool ATank::IsAlive() const
+{
+    return bAlive;
+}
+
 void ATank::HandleDestruction()
 {
     Super::HandleDestruction();
 
     SetActorHiddenInGame(true);
     SetActorTickEnabled(false);
+
+    bAlive = false;
 }
 
 APlayerController* ATank::GetPlayerController() const

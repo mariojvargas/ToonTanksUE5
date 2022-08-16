@@ -26,12 +26,16 @@ public:
 
 	APlayerController* GetPlayerController() const;
 
+	bool IsAlive() const;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 	APlayerController* PlayerController;
+
+	bool bAlive = true;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;

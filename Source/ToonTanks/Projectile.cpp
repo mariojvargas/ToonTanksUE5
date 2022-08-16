@@ -55,11 +55,11 @@ void AProjectile::OnHit(
 		return;
 	}
 	
-	auto ProjectileOwner = GetOwner();
+	AActor* ProjectileOwner = GetOwner();
 	if (ProjectileOwner && ProjectileOwner != DamagedActor)
 	{
-		auto OwnerInstigator = ProjectileOwner->GetInstigatorController();
-		auto DamageTypeClass = UDamageType::StaticClass();
+		AController* OwnerInstigator = ProjectileOwner->GetInstigatorController();
+		UClass* DamageTypeClass = UDamageType::StaticClass();
 		UGameplayStatics::ApplyDamage(DamagedActor, Damage, OwnerInstigator, this, DamageTypeClass);
 
 		if (ImpactParticles)

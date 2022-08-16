@@ -46,7 +46,13 @@ bool ATower::IsTankWithinFireRange() const
 
 void ATower::CheckFireCondition()
 {
-    if (IsTankWithinFireRange())
+    if (!Tank)
+    {
+        return;
+    }
+
+
+    if (IsTankWithinFireRange() && Tank->IsAlive())
     {
         Fire();
     }
