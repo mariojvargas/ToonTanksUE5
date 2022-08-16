@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"	// Really optional because I didn't get squigglies 
 #include "Kismet/GameplayStatics.h"
 #include "Projectile.h"
+#include "Particles/ParticleSystem.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -28,7 +29,16 @@ ABasePawn::ABasePawn()
 
 void ABasePawn::HandleDestruction()
 {
-	// TODO: Add visual effects
+	if (DeathEffect)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(
+			this, 
+			DeathEffect, 
+			GetActorLocation(), 
+			GetActorRotation()
+		);
+	}
+
 	// TODO: Add sound effects
 }
 
