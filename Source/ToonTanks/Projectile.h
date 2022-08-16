@@ -43,6 +43,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	USoundBase* HitSound = nullptr;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass = nullptr;
+
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 	class UProjectileMovementComponent* ProjectileMovement = nullptr;
 
